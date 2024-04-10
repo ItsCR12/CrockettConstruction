@@ -558,8 +558,13 @@ h3{
 
 @media (max-width: 700px) {
     .contact-col-form {
-       margin-left: -50px;
-       width: 50%;
+       display: block;
+       margin-left: 4 auto;
+       align-items: left;
+     }
+     .src {
+        margin-left: -50;
+        width: 450px;
      }
      .contact-col div h5{
         font-size: 14px;
@@ -569,16 +574,3 @@ h3{
         
     }
    }
-
-
-
-
-
-
-
-
-
-
-
-
-
