@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crockett Construction</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="Images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li>
+                        <button id="dropdownBtn" class="dropdown-btn">SERVICES</button>
+                        <div id="dropdownContent" class="dropdown-content dropdown-content-services">
+                            <a href="roofing.html">Roofing</a>
+                            <a href="siding.html">Siding</a>
+                            <a href="gutters.html">Gutters</a>
+                        </div>
+                    </li>
+                    <li><a href="design.html">DESIGN YOUR DREAM HOME</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+            <h1>Gutters</h1>
+    </section>
+    
+    
+<!------- Roofing ------->
+<section>
+<div class="roofBody">
+    <div class="roofCont">
+        <img src="Images/GuttersPage.png" class="roofImg">
+        <div class="roofText">
+            <h2>Gutters</h2>
+            <p>Our expert gutter system combines functionality with aesthetic appeal, offering homeowners a range of color options to suit their preferences and complement their home exteriors. Crafted with precision and durability in mind, our gutter system efficiently manages rainwater while adding a touch of style to any residence. Whether opting for classic neutrals, bold hues, or natural tones, homeowners can personalize their gutter system to seamlessly blend with their home's architectural design. With our expertise and attention to detail, we ensure that each installation not only enhances curb appeal but also provides reliable protection against water damage for years to come.
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+<section>
+    <div class="roofBody">
+        <div class="roofCont">
+            <img src="Images/GutterGuards.png" class="roofImg">
+            <div class="roofText">
+                <h2>Gutter Guards</h2>
+                <p>Our gutter guard system provides homeowners with peace of mind by effectively preventing debris buildup and clogging in gutters. Engineered with precision and durability, our gutter guards are designed to fit seamlessly onto existing gutters, creating a barrier that keeps leaves, twigs, and other debris out while allowing rainwater to flow freely. This innovative solution reduces the need for frequent gutter cleaning and maintenance, saving homeowners time and effort. With our gutter guard system, homeowners can rest assured that their gutters will remain clear and functional, protecting their homes from potential water damage and ensuring optimal performance year-round.
+                </p>
+            </div>
+        </div>
+    </div>   
+</section>
+
+    
+<!-------- footer ---------->
+
+<section class="footer">
+    <h4>Social Media</h4>
+    <p>Check out the social media pages of the best team of experts in Ohio!</p>
+    <div class="icons">
+        <a href="https://www.facebook.com/profile.php?id=100093559455723"><i class="fa fa-facebook"></i></a>
+        <a href="https://www.instagram.com/the_crockett_construction/"><i class="fa fa-instagram"></i></a>
+    </div>
+    <div>
+        <i class="fa fa-copyright"> 2024 Crockett Construction</i>
+    </div>
+</section>  
+  
+<!----JavaScript for toggle menu---->
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+</script> 
+<script>
+    document.getElementById("dropdownBtn").addEventListener("click", function() {
+        document.getElementById("dropdownContent").classList.toggle("show");
+    });
+    </script>
+    
+</body>
+</html>    

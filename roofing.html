@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crockett Construction</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="Images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li>
+                        <button id="dropdownBtn" class="dropdown-btn">SERVICES</button>
+                        <div id="dropdownContent" class="dropdown-content dropdown-content-services">
+                            <a href="roofing.html">Roofing</a>
+                            <a href="siding.html">Siding</a>
+                            <a href="gutters.html">Gutters</a>
+                        </div>
+                    </li>
+                    <li><a href="design.html">DESIGN YOUR DREAM HOME</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+            <h1>Roofing</h1>
+    </section>
+    
+    
+<!------- Roofing ------->
+<section>
+<div class="roofBody">
+    <div class="roofCont">
+        <img src="Images/RoofSystem.png" class="roofImg">
+        <div class="roofText">
+            <h2>Our Roofing System</h2>
+            <p>Our roofing installation process is 
+            meticulously designed to ensure the best 
+            results for every project. From the initial 
+            assessment to the final touches, we prioritize
+            quality, precision, and customer satisfaction.
+            Our team of experienced professionals begins
+            by thoroughly inspecting the site, identifying
+            any potential issues or challenges. We then 
+            develop a customized plan tailored to the specific 
+            needs of the project, utilizing high-quality 
+            materials and advanced techniques. Throughout 
+            the installation process, we maintain open 
+            communication with our clients, keeping them 
+            informed every step of the way. Our commitment 
+            to excellence means that we don't consider the 
+            job complete until our customers are fully satisfied 
+            with the results. With our rigorous attention to 
+            detail and dedication to craftsmanship, 
+            we guarantee a roofing solution that is durable, 
+            reliable, and built to last.
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+<section>
+    <div class="roofBody">
+        <div class="roofCont">
+            <img src="Images/ShingleStyles.png" class="roofImg">
+            <div class="roofText">
+                <h2>Shingle Styles & Colors</h2>
+                <p>Our range of shingle styles and 
+                colors offers homeowners a plethora 
+                of choices to match their unique tastes 
+                and architectural preferences. Whether 
+                seeking the timeless appeal of traditional 
+                asphalt shingles or the sleek sophistication 
+                of architectural shingles, we provide options 
+                to suit every aesthetic. From classic neutrals 
+                like charcoal and slate to bold hues such as 
+                terra cotta and forest green, our color palette 
+                encompasses a spectrum of possibilities to 
+                complement any home exterior. With durable 
+                materials designed to withstand the elements 
+                and enhance curb appeal, homeowners can trust 
+                that our selection not only delivers style but 
+                also longevity and performance.
+                </p>
+            </div>
+        </div>
+    </div>   
+
+    <h2 class="HeaderBrands">Brands We Offer</h2>
+
+    <div class="Brands">
+        <div class="Brand1">
+                <a href="https://www.owenscorning.com/en-us/roofing/shingles">
+                    <img src="Images/Brand1.png" class="BrandImg"> </a>
+                    <p>Click the image to learn more</p>
+        </div>
+    </div>
+    <div class="Brands">
+        <div class="Brand2">
+            <a href="https://www.gaf.com/en-us/roofing-materials/residential-roofing-materials/shingles">
+                <img src="Images/Brand2.png" class="BrandImg"> </a>
+                    <p>Click the image to learn more</p>
+        </div>
+    </div>
+    <div class="Brands">
+        <div class="Brand3">
+            <a href="https://www.certainteed.com/products/residential-roofing-products/landmark-pro?gad_source=1&gclid=CjwKCAiA0bWvBhBjEiwAtEsoW7ib00GBsZPNhUngk4YDpr5r2VHKOTANv1yCyScPRZXbi0CnbZHDaxoC3-IQAvD_BwE">
+                <img src="Images/Brand3.png" class="BrandImg"> </a>
+                    <p>Click the image to learn more</p>
+        </div>
+    </div>
+</section>
+
+    
+<!-------- footer ---------->
+
+<section class="footer">
+    <h4>Social Media</h4>
+    <p>Check out the social media pages of the best team of experts in Ohio!</p>
+    <div class="icons">
+        <a href="https://www.facebook.com/profile.php?id=100093559455723"><i class="fa fa-facebook"></i></a>
+        <a href="https://www.instagram.com/the_crockett_construction/"><i class="fa fa-instagram"></i></a>
+    </div>
+    <div>
+        <i class="fa fa-copyright"> 2024 Crockett Construction</i>
+    </div>
+</section>  
+  
+<!----JavaScript for toggle menu---->
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+</script> 
+<script>
+    document.getElementById("dropdownBtn").addEventListener("click", function() {
+        document.getElementById("dropdownContent").classList.toggle("show");
+    });
+    </script>
+    
+</body>
+</html>    
