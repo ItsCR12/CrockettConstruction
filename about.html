@@ -10,18 +10,25 @@
     <section class="sub-header">
         <nav>
             <a href="index.html"><img src="Images/logo.png"></a>
-            <div class="nav-links" id="navLinks">  
+            <div class="nav-links" id="navLinks">
                 <i class="fa fa-close" onclick="hideMenu()"></i>
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="services.html">SERVICES</a></li>
+                    <li>
+                        <button id="dropdownBtn" class="dropdown-btn">SERVICES</button>
+                        <div id="dropdownContent" class="dropdown-content dropdown-content-services">
+                            <a href="roofing.html">Roofing</a>
+                            <a href="siding.html">Siding</a>
+                            <a href="gutters.html">Gutters</a>
+                        </div>
+                    </li>
                     <li><a href="design.html">DESIGN YOUR DREAM HOME</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
-        </nav>   
+        </nav> 
             <h1>About Us</h1>
     </section>
     
