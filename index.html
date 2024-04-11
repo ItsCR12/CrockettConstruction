@@ -1,7 +1,8 @@
 <html>
 <head>
+<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crockett Construction</title>
+<title>Crockett Construction </title>
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -11,12 +12,19 @@
         
         <nav>
             <a href="index.html"><img src="Images/logo.png"></a>
-            <div class="nav-links" id="navLinks">  
+            <div class="nav-links" id="navLinks">
                 <i class="fa fa-close" onclick="hideMenu()"></i>
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="services.html">SERVICES</a></li>
+                    <li>
+                        <button id="dropdownBtn" class="dropdown-btn">SERVICES</button>
+                        <div id="dropdownContent" class="dropdown-content dropdown-content-services">
+                            <a href="roofing.html">Roofing</a>
+                            <a href="siding.html">Siding</a>
+                            <a href="gutters.html">Gutters</a>
+                        </div>
+                    </li>
                     <li><a href="design.html">DESIGN YOUR DREAM HOME</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
@@ -43,16 +51,22 @@
         <p>Check out what we can do for you.</p>
         <div class="row">
             <div class="services-col">
-                <h3>Roofing</h3>
-                <p>Welcome to Crockett Construction, your premier choice for top-quality roofing solutions. With years of expertise, we deliver excellence in every project. Our skilled team ensures superior craftsmanship using high-grade materials and advanced techniques. Trust Crockett Construction for reliable, durable roofing that exceeds expectations.</p>
+                <a href="roofing.html">
+                    <h3>Roofing</h3>
+                    <p>Welcome to Crockett Construction, your premier choice for top-quality roofing solutions. With years of expertise, we deliver excellence in every project. Our skilled team ensures superior craftsmanship using high-grade materials and advanced techniques. Trust Crockett Construction for reliable, durable roofing that exceeds expectations.</p>
+                </a>
             </div>
             <div class="services-col">
-                <h3>Siding</h3>
-                <p>Welcome to Crockett Construction, your go-to destination for exceptional siding services. With our expertise and dedication, we deliver top-notch siding solutions tailored to your needs. Our experienced team utilizes premium materials and innovative techniques to ensure superior results. Trust Crockett Construction for reliable, stylish siding that enhances the beauty and durability of your home.</p>
+                <a href="siding.html">
+                    <h3>Siding</h3>
+                    <p>Welcome to Crockett Construction, your go-to destination for exceptional siding services. With our expertise and dedication, we deliver top-notch siding solutions tailored to your needs. Our experienced team utilizes premium materials and innovative techniques to ensure superior results. Trust Crockett Construction for reliable, stylish siding that enhances the beauty and durability of your home.</p>
+                </a>
             </div>
             <div class="services-col">
-                <h3>Gutters</h3>
-                <p>Welcome to Crockett Construction, your ultimate destination for exceptional gutter services. With our commitment to excellence, we provide top-quality gutter solutions tailored to your home's needs. Our experienced team employs premium materials and innovative techniques to ensure optimal functionality and durability. Count on Crockett Construction for reliable, efficient gutter installations and repairs that safeguard your home from water damage.</p>
+                <a href="gutters.html">
+                    <h3>Gutters</h3>
+                    <p>Welcome to Crockett Construction, your ultimate destination for exceptional gutter services. With our commitment to excellence, we provide top-quality gutter solutions tailored to your home's needs. Our experienced team employs premium materials and innovative techniques to ensure optimal functionality and durability. Count on Crockett Construction for reliable, efficient gutter installations and repairs that safeguard your home from water damage.</p>
+                </a>
             </div>
         </div>
     </section>
@@ -189,6 +203,11 @@
         navLinks.style.right = "-200px";
     }
 </script> 
+<script>
+    document.getElementById("dropdownBtn").addEventListener("click", function() {
+        document.getElementById("dropdownContent").classList.toggle("show");
+    });
+    </script>
     
 </body>
 </html>
