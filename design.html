@@ -35,30 +35,7 @@
 <!---------- Blog Page Content ---------->
 
     </section>
-    <section class="blog-content">
-        <div class="row">
-        <div class="blog-left">
-            <img src="Images/design.png">
-            
-            
-        </div>
-            
-        <div class="blog-right">
-            <h3>Design Your New Look</h3>
-            <br>
-            <p>Utilize our exterior home design software
-            to generate your own inspiration for your home's
-            new look. When you're done, simply contact us to 
-            schedule your free estimate.</p>
-            <div class="hero-btn2-container">
-                <a href="https://dreamdesigner.renoworks.com/" class="hero-btn2">Design Now!</a>
-              </div>
-               
-                
-               
-            </div> 
-        
-        </div>
+    <div id="visualizer" data-zip="90210"> </div>
         </section>
     
 <!-------- footer ---------->
@@ -88,11 +65,12 @@
         navLinks.style.right = "-200px";
     }
 </script> 
-    <script>
+<script>
     document.getElementById("dropdownBtn").addEventListener("click", function() {
         document.getElementById("dropdownContent").classList.toggle("show");
     });
     </script>
+<script src="https://apis.owenscorning.com/client/widget.js" async></script>
     
 </body>
 </html>    
