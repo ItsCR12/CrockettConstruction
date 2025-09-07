@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crockett Construction | Roof Price Estimator</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<link rel="stylesheet" href="assets/roof-estimator.css">
+<!-- Google Maps JavaScript API (replace YOUR_GOOGLE_MAPS_API_KEY) -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASWzFqaaoZ2kIo4qb9Xj4Tnsof8c6OnDY&libraries=places,drawing,geometry" defer></script>
+<script src="assets/roof-estimator.js" defer></script>
+</head>
+<body>
+
+<section class="sub-header">
+    <nav>
+            <a href="index.html"><img src="Images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li>
+                        <button id="dropdownBtn" class="dropdown-btn">SERVICES</button>
+                        <div id="dropdownContent" class="dropdown-content dropdown-content-services">
+                            <a href="roofing.html">Roofing</a>
+                            <a href="siding.html">Siding</a>
+                            <a href="gutters.html">Gutters</a>
+                        </div>
+                    </li>
+                    <li><a href="design.html">DESIGN YOUR DREAM HOME</a></li>
+                    <li><a href="roof-estimator.html">ROOF ESTIMATOR</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    <h1>Roof Price Estimator</h1>
+</section>
+
+<section class="estimator-wrapper">
+
+    <div class="estimator-card">
+        <h2>1) Your Home</h2>
+        <div class="estimator-field">
+            <label for="address">Address</label>
+            <input id="address" type="text" placeholder="123 Main St, City, OH" autocomplete="off" />
+        </div>
+        <div id="map"></div>
+        <p class="estimator-muted" style="margin-top:8px;">
+            Tip: Click <em>Auto-Find Roof Outline</em>. If it can't find one, use <em>Draw Roof</em> to outline your roof.
+        </p>
+        <div class="estimator-actions" style="margin-top:10px;">
+            <button id="autoFootprintBtn" class="btn-cc">Auto-Find Roof Outline</button>
+            <button id="drawRoofBtn" class="btn-cc secondary">Draw Roof</button>
+            <button id="clearBtn" class="btn-cc ghost">Clear</button>
+        </div>
+    </div>
+
+    <div class="estimator-card">
+        <h2>2) Roof Details</h2>
+        <div class="estimator-grid">
+            <div class="estimator-field">
+                <label>Roof Type</label>
+                <div class="estimator-radio">
+                    <label><input type="radio" name="roofType" value="shingle" checked> Shingle</label>
+                    <label><input type="radio" name="roofType" value="metal"> Metal</label>
+                </div>
+            </div>
+            <div class="estimator-field">
+                <label for="slopeRange">Slope (rise per 12&quot; run)</label>
+                <div class="estimator-slider">
+                    <input id="slopeRange" type="range" min="1" max="12" step="1" value="6">
+                    <span id="slopeValue">6/12</span>
+                </div>
+                <small class="estimator-muted">Surface area increases with steeper slopes. We adjust using √(1 + (rise/12)²).</small>
+            </div>
+        </div>
+
+        <div id="calcResults" class="estimator-results">
+            <h3>Measurements</h3>
+            <ul>
+                <li><span>Footprint area:</span> <strong id="footprintSqft">—</strong> ft²</li>
+                <li><span>Slope factor:</span> <strong id="slopeFactor">—</strong></li>
+                <li><span>Waste (15%):</span> <strong>15%</strong></li>
+                <li><span>Estimated roof surface area:</span> <strong id="surfaceSqft">—</strong> ft²</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="estimator-card">
+        <h2>3) Contact Info</h2>
+        <div class="estimator-grid">
+            <div class="estimator-field">
+                <label for="fullName">Full Name</label>
+                <input id="fullName" type="text" placeholder="First & Last Name">
+            </div>
+            <div class="estimator-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com">
+            </div>
+            <div class="estimator-field">
+                <label for="phone">Phone</label>
+                <input id="phone" type="tel" placeholder="(555) 555-5555">
+            </div>
+        </div>
+    </div>
+
+    <div class="estimator-card">
+        <h2>4) Estimate</h2>
+        <div id="estimateBox" class="estimator-box">
+            <p class="estimator-muted">Complete steps above to calculate.</p>
+        </div>
+        <div class="estimator-actions" style="justify-content:flex-end; margin-top:10px;">
+            <button id="estimateBtn" class="btn-cc">Calculate Price</button>
+            <button id="emailBtn" class="btn-cc secondary" disabled>Email Me &amp; Crockett Construction</button>
+        </div>
+        <p class="estimator-muted" style="margin-top:8px;">
+            This is a ballpark estimate. Final pricing depends on roof complexity, layers, decking, access, permits, and site conditions.
+        </p>
+    </div>
+
+</section>
+
+<footer class="footer">
+    <h4>About Us</h4>
+    <p>Quality roofing, siding, and gutters for our community.</p>
+</footer>
+
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() {{ navLinks.style.right = "0"; }}
+    function hideMenu() {{ navLinks.style.right = "-200px"; }}
+</script>
+<script>
+    var btn = document.getElementById("dropdownBtn");
+    if (btn) {{ btn.addEventListener("click", function() {{
+        var dd = document.getElementById("dropdownContent");
+        if (dd) dd.classList.toggle("show");
+    }}); }}
+</script>
+
+</body>
+</html>
