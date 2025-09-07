@@ -74,7 +74,9 @@ function renderEstimate(est){ const money=(n)=>n.toLocaleString(undefined,{style
   document.getElementById("estimateBox").innerHTML = `
   <div class="estimator-price-row">
     <div class="estimator-price-card"><h4>Low Estimate</h4><div class="estimator-price">${money(est.priceLow)}</div>
+      <div><small>Based on ${est.surfaceSqft.toFixed(0)} ft² @ $${est.costsUsed.typeMin.toFixed(2)}/ft² plus profit.</small></div></div>
     <div class="estimator-price-card"><h4>High Estimate</h4><div class="estimator-price">${money(est.priceHigh)}</div>
+      <div><small>Based on ${est.surfaceSqft.toFixed(0)} ft² @ $${est.costsUsed.typeMax.toFixed(2)}/ft² plus profit.</small></div></div>
   </div>`;
 }
 function buildEmailPayload(est){ return { timestamp:new Date().toISOString(), address:est.address, roofType:est.roofType, slope:est.slope, slopeFactor:est.slopeFactor,
