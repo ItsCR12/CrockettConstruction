@@ -21,3 +21,4 @@
 .btn-cc.ghost { background:transparent; color:#333; border:1px solid #ddd; }
 .btn-cc[disabled] { opacity:.6; cursor:not-allowed; }
 .estimator-muted { color:#666; }
+.estimator-price-card small { display: none !important; }
