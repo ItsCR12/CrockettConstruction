@@ -1,146 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crockett Construction | Roof Price Estimator</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="assets/roof-estimator.css">
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASWzFqaaoZ2kIo4qb9Xj4Tnsof8c6OnDY&libraries=places,drawing,geometry" defer></script>
-<script src="assets/roof-estimator.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get a ballpark shingle roof replacement estimate from Crockett Construction.">
+    <title>Crockett Construction | Roof Price Estimator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/roof-estimator.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASWzFqaaoZ2kIo4qb9Xj4Tnsof8c6OnDY&libraries=places,geometry" defer></script>
+    <script src="assets/roof-estimator.js" defer></script>
 </head>
 <body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="Images/logo.png" alt="Crockett Construction"></a>
+            <div class="nav-links" id="navLinks">
+                <button class="nav-icon" type="button" aria-label="Close menu" onclick="hideMenu()">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li class="dropdown">
+                        <a href="services.html" class="dropbtn" id="dropdownBtn">SERVICES</a>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="roofing.html">Roofing</a>
+                            <a href="siding.html">Siding</a>
+                            <a href="gutters.html">Gutters</a>
+                            <a href="design.html">Design</a>
+                        </div>
+                    </li>
+                    <li><a href="roof-estimator.html" aria-current="page">ROOF ESTIMATOR</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <button class="nav-icon" type="button" aria-label="Open menu" onclick="showMenu()">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+        </nav>
+        <h1>Roof Price Estimator</h1>
+    </section>
 
-<section class="sub-header">
-    <nav>
-        <a href="index.html"><img src="../Images/logo.png" alt="Crockett Construction"></a>
-        <div class="nav-links" id="navLinks">
-            <i class="fa fa-times" onclick="hideMenu()"></i>
-            <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li class="dropdown">
-                    <a href="services.html" class="dropbtn" id="dropdownBtn">SERVICES</a>
-                    <div class="dropdown-content" id="dropdownContent">
-                        <a href="roofing.html">Roofing</a>
-                        <a href="siding.html">Siding</a>
-                        <a href="gutters.html">Gutters</a>
-                        <a href="design.html">Design</a>
+    <main class="estimator-wrapper">
+        <div id="estimatorStatus" class="estimator-status" role="status" aria-live="polite" hidden></div>
+
+        <section class="estimator-card" aria-labelledby="homeHeading">
+            <h2 id="homeHeading"><span>1</span> Your Home</h2>
+            <div class="estimator-field">
+                <label for="address">Property address <b aria-hidden="true">*</b></label>
+                <input id="address" type="text" placeholder="123 Main St, City, OH" autocomplete="street-address" required>
+            </div>
+            <div id="map" aria-label="Satellite map used to outline the roof"></div>
+            <p class="estimator-help">Choose an address suggestion, then try automatic detection. If the outline is missing or incorrect, draw or edit it directly on the map.</p>
+            <div class="estimator-actions">
+                <button id="autoFootprintBtn" class="btn-cc" type="button">Auto-Find Outline</button>
+                <button id="drawRoofBtn" class="btn-cc secondary" type="button">Draw Roof</button>
+                <button id="clearBtn" class="btn-cc ghost" type="button">Clear Outline</button>
+            </div>
+        </section>
+
+        <section class="estimator-card" aria-labelledby="detailsHeading">
+            <h2 id="detailsHeading"><span>2</span> Roof Details</h2>
+            <div class="estimator-grid">
+                <div class="estimator-field">
+                    <label>Roofing system</label>
+                    <div class="estimator-static-value">Architectural shingles</div>
+                </div>
+                <div class="estimator-field">
+                    <label for="slopeRange">Approximate roof pitch</label>
+                    <div class="estimator-slider">
+                        <input id="slopeRange" type="range" min="1" max="12" step="1" value="6">
+                        <output id="slopeValue" for="slopeRange">6/12</output>
                     </div>
-                </li>
-                <li><a href="roof-estimator.html">ROOF ESTIMATOR</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </div>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-    </nav>
-    <h1>Roof Price Estimator</h1>
-</section>
-
-<section class="estimator-wrapper">
-
-    <div class="estimator-card">
-        <h2>1) Your Home</h2>
-        <div class="estimator-field">
-            <label for="address">Address</label>
-            <input id="address" type="text" placeholder="123 Main St, City, OH" autocomplete="off" />
-        </div>
-        <div id="map"></div>
-        <p class="estimator-muted" style="margin-top:8px;">
-            Tip: Click <em>Auto-Find Roof Outline</em>. If it can't find one, use <em>Draw Roof</em> to outline your roof.
-        </p>
-        <div class="estimator-actions" style="margin-top:10px;">
-            <button id="autoFootprintBtn" class="btn-cc">Auto-Find Roof Outline</button>
-            <button id="drawRoofBtn" class="btn-cc secondary">Draw Roof</button>
-            <button id="clearBtn" class="btn-cc ghost">Clear</button>
-        </div>
-    </div>
-
-    <div class="estimator-card">
-        <h2>2) Roof Details</h2>
-        <div class="estimator-grid">
-            <div class="estimator-field">
-                <label>Roof Type</label>
-                <div class="estimator-radio">
-                    <label><input type="radio" name="roofType" value="shingle" checked> Shingle</label>
-                    <label><input type="radio" name="roofType" value="metal"> Metal</label>
+                    <small class="estimator-muted">Move the slider to the closest pitch. The final onsite measurement may differ.</small>
                 </div>
             </div>
-            <div class="estimator-field">
-                <label for="slopeRange">Slope (rise per 12&quot; run)</label>
-                <div class="estimator-slider">
-                    <input id="slopeRange" type="range" min="1" max="12" step="1" value="6">
-                    <span id="slopeValue">6/12</span>
+
+            <div id="calcResults" class="estimator-results" hidden>
+                <h3>Estimated Measurements</h3>
+                <ul>
+                    <li><span>Building footprint</span><strong><span id="footprintSqft">0</span> ft&sup2;</strong></li>
+                    <li><span>Slope factor</span><strong id="slopeFactor">0</strong></li>
+                    <li><span>Waste allowance</span><strong id="wastePct">15%</strong></li>
+                    <li><span>Estimated order area</span><strong><span id="surfaceSqft">0</span> ft&sup2;</strong></li>
+                    <li><span>Estimated roofing squares</span><strong id="roofingSquares">0</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="estimator-card" aria-labelledby="contactHeading">
+            <h2 id="contactHeading"><span>3</span> Contact Information</h2>
+            <p class="estimator-intro">Required to display your estimate. Your information is sent directly to Crockett Construction.</p>
+            <div class="estimator-grid contact-grid">
+                <div class="estimator-field">
+                    <label for="fullName">Full name <b aria-hidden="true">*</b></label>
+                    <input id="fullName" type="text" placeholder="First and last name" autocomplete="name" required>
                 </div>
-                <small class="estimator-muted">Surface area increases with steeper slopes. We adjust using √(1 + (rise/12)²).</small>
+                <div class="estimator-field">
+                    <label for="email">Email <b aria-hidden="true">*</b></label>
+                    <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+                <div class="estimator-field">
+                    <label for="phone">Phone <b aria-hidden="true">*</b></label>
+                    <input id="phone" type="tel" placeholder="(419) 555-1234" autocomplete="tel" inputmode="tel" required>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div id="calcResults" class="estimator-results">
-            <h3>Measurements</h3>
-            <ul>
-                <li><span>Footprint area:</span> <strong id="footprintSqft">—</strong> ft²</li>
-                <li><span>Slope factor:</span> <strong id="slopeFactor">—</strong></li>
-                <li><span>Waste (15%):</span> <strong>15%</strong></li>
-                <li><span>Estimated roof surface area:</span> <strong id="surfaceSqft">—</strong> ft²</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="estimator-card">
-        <h2>3) Contact Info</h2>
-        <div class="estimator-grid">
-            <div class="estimator-field">
-                <label for="fullName">Full Name</label>
-                <input id="fullName" type="text" placeholder="First & Last Name">
+        <section class="estimator-card" aria-labelledby="estimateHeading">
+            <h2 id="estimateHeading"><span>4</span> Your Estimate</h2>
+            <div id="estimateBox" class="estimator-box">
+                <p class="estimator-muted">Complete the steps above to calculate your estimated price.</p>
             </div>
-            <div class="estimator-field">
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="you@example.com">
+            <div class="estimator-actions estimate-action">
+                <button id="estimateBtn" class="btn-cc estimate-button" type="button">Calculate My Price</button>
             </div>
-            <div class="estimator-field">
-                <label for="phone">Phone</label>
-                <input id="phone" type="tel" placeholder="(555) 555-5555">
-            </div>
-        </div>
-    </div>
+            <p class="estimator-disclaimer">This is a ballpark estimate, not a contract or binding quote. Final pricing depends on verified measurements, roof complexity, existing layers, decking, flashing, ventilation, access, permits, and site conditions.</p>
+        </section>
+    </main>
 
-    <div class="estimator-card">
-        <h2>4) Estimate</h2>
-        <div id="estimateBox" class="estimator-box">
-            <p class="estimator-muted">Complete steps above to calculate.</p>
-        </div>
-        <div class="estimator-actions" style="justify-content:flex-end; margin-top:10px;">
-            <button id="estimateBtn" class="btn-cc">Calculate Price</button>
-        </div>
-        <p class="estimator-muted" style="margin-top:8px;">
-            This is a ballpark estimate. Final pricing depends on roof complexity, layers, decking, access, permits, and site conditions.
-        </p>
-    </div>
+    <footer class="footer">
+        <h4>About Us</h4>
+        <p>Quality roofing, siding, and gutters for our community.</p>
+    </footer>
 
-</section>
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() { navLinks.style.right = "0"; }
+        function hideMenu() { navLinks.style.right = "-200px"; }
 
-<footer class="footer">
-    <h4>About Us</h4>
-    <p>Quality roofing, siding, and gutters for our community.</p>
-</footer>
-
-<script>
-    var navLinks = document.getElementById("navLinks");
-    function showMenu() { navLinks.style.right = "0"; }
-    function hideMenu() { navLinks.style.right = "-200px"; }
-</script>
-<script>
-    var btn = document.getElementById("dropdownBtn");
-    if (btn) {
-        btn.addEventListener("click", function() {
-            var dd = document.getElementById("dropdownContent");
-            if (dd) dd.classList.toggle("show");
-        });
-    }
-</script>
-
+        var dropdownBtn = document.getElementById("dropdownBtn");
+        if (dropdownBtn) {
+            dropdownBtn.addEventListener("click", function(event) {
+                if (window.innerWidth <= 700) {
+                    event.preventDefault();
+                    document.getElementById("dropdownContent")?.classList.toggle("show");
+                }
+            });
+        }
+    </script>
 </body>
 </html>
