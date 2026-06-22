@@ -85,6 +85,15 @@
 
 .estimator-field input.is-invalid { border-color: var(--cc-error); }
 
+.estimator-address-row {
+    align-items: stretch;
+    display: flex;
+    gap: 10px;
+}
+
+.estimator-address-row input { flex: 1; }
+.estimator-address-row .btn-cc { flex: 0 0 auto; }
+
 .estimator-static-value {
     align-items: center;
     background: var(--cc-soft);
@@ -102,6 +111,7 @@
     height: 480px;
     margin-top: 14px;
     width: 100%;
+    z-index: 0;
 }
 
 .estimator-help,
@@ -224,7 +234,6 @@
 }
 
 .estimator-price { color: var(--cc-charcoal); font-size: clamp(1.65rem, 4vw, 2.25rem); font-weight: 700; }
-.estimator-price-note { color: var(--cc-muted); display: block; font-size: 0.78rem; margin-top: 5px; }
 .estimate-action { justify-content: flex-end; }
 .estimate-button { min-width: 210px; }
 
@@ -258,6 +267,8 @@
     .estimator-grid, .contact-grid, .estimator-price-row { grid-template-columns: 1fr; }
     #map { height: 380px; }
     .estimator-actions .btn-cc, .estimate-button { flex: 1 1 100%; width: 100%; }
+    .estimator-address-row { align-items: stretch; flex-direction: column; }
+    .estimator-address-row .btn-cc { width: 100%; }
 }
 
 @media (max-width: 480px) {
