@@ -1,24 +1,266 @@
+:root {
+    --cc-orange: #f36f21;
+    --cc-orange-dark: #cf5310;
+    --cc-charcoal: #292929;
+    --cc-border: #dedede;
+    --cc-muted: #666;
+    --cc-soft: #f6f6f6;
+    --cc-success: #176b3a;
+    --cc-error: #a52626;
+}
 
-/* Minimal styles for estimator; inherits site fonts/colors */
-.estimator-wrapper { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
-.estimator-card { background:#fff; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:18px; margin-bottom:16px; }
-.estimator-actions { display:flex; gap:10px; flex-wrap:wrap; }
-#map { width:100%; height:480px; border-radius:10px; border:1px solid #eee; margin-top:12px; }
-.estimator-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:14px; }
-.estimator-field label { display:block; font-weight:600; margin-bottom:6px; }
-.estimator-field input[type="text"], .estimator-field input[type="email"], .estimator-field input[type="tel"] { width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px; }
-.estimator-radio { display:flex; gap:16px; align-items:center; }
-.estimator-slider { display:flex; gap:12px; align-items:center; }
-.estimator-results { display:none; }
-.estimator-results ul { list-style:none; padding:0; margin:10px 0 0; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:8px; }
-.estimator-results li { background:#fafafa; padding:10px 12px; border:1px solid #eee; border-radius:8px; display:flex; justify-content:space-between; }
-.estimator-box { background:#fafafa; border:1px solid #eee; border-radius:10px; padding:14px; min-height:72px; display:flex; align-items:center; justify-content:center; }
-.estimator-price-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:12px; width:100%; }
-.estimator-price-card { border:1px solid #eee; border-radius:10px; padding:14px; background:#fff; }
-.estimator-price { font-size:1.4rem; font-weight:700; color:#333; }
-.btn-cc { background:#f44336; border:none; color:#fff; padding:10px 14px; border-radius:8px; cursor:pointer; }
-.btn-cc.secondary { background:#333; }
-.btn-cc.ghost { background:transparent; color:#333; border:1px solid #ddd; }
-.btn-cc[disabled] { opacity:.6; cursor:not-allowed; }
-.estimator-muted { color:#666; }
-.estimator-price-card small { display: none !important; }
+* { box-sizing: border-box; }
+
+.estimator-wrapper {
+    width: min(1100px, calc(100% - 32px));
+    margin: 40px auto;
+}
+
+.estimator-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    margin-bottom: 18px;
+    padding: 22px;
+}
+
+.estimator-card h2 {
+    align-items: center;
+    color: var(--cc-charcoal);
+    display: flex;
+    font-size: 1.35rem;
+    gap: 10px;
+    margin: 0 0 18px;
+}
+
+.estimator-card h2 > span {
+    align-items: center;
+    background: var(--cc-orange);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex: 0 0 30px;
+    font-size: 0.95rem;
+    height: 30px;
+    justify-content: center;
+}
+
+.estimator-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.estimator-field label {
+    color: var(--cc-charcoal);
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.estimator-field label b { color: var(--cc-orange-dark); }
+
+.estimator-field input[type="text"],
+.estimator-field input[type="email"],
+.estimator-field input[type="tel"] {
+    background: #fff;
+    border: 1px solid #cfcfcf;
+    border-radius: 6px;
+    color: var(--cc-charcoal);
+    font: inherit;
+    min-height: 46px;
+    padding: 10px 12px;
+    width: 100%;
+}
+
+.estimator-field input:focus {
+    border-color: var(--cc-orange);
+    box-shadow: 0 0 0 3px rgba(243, 111, 33, 0.18);
+    outline: none;
+}
+
+.estimator-field input.is-invalid { border-color: var(--cc-error); }
+
+.estimator-static-value {
+    align-items: center;
+    background: var(--cc-soft);
+    border: 1px solid var(--cc-border);
+    border-radius: 6px;
+    display: flex;
+    font-weight: 600;
+    min-height: 46px;
+    padding: 10px 12px;
+}
+
+#map {
+    border: 1px solid var(--cc-border);
+    border-radius: 8px;
+    height: 480px;
+    margin-top: 14px;
+    width: 100%;
+}
+
+.estimator-help,
+.estimator-intro,
+.estimator-disclaimer {
+    color: var(--cc-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.estimator-intro { margin: -6px 0 16px; }
+.estimator-disclaimer { margin: 14px 0 0; }
+.estimator-muted { color: var(--cc-muted); }
+
+.estimator-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.btn-cc {
+    background: var(--cc-orange);
+    border: 1px solid var(--cc-orange);
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    min-height: 44px;
+    padding: 10px 16px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-cc:hover { background: var(--cc-orange-dark); border-color: var(--cc-orange-dark); }
+.btn-cc.secondary { background: var(--cc-charcoal); border-color: var(--cc-charcoal); }
+.btn-cc.secondary:hover { background: #111; border-color: #111; }
+.btn-cc.ghost { background: #fff; border-color: #bdbdbd; color: var(--cc-charcoal); }
+.btn-cc.ghost:hover { background: var(--cc-soft); }
+.btn-cc:disabled { cursor: wait; opacity: 0.6; }
+
+.estimator-slider {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    min-height: 46px;
+}
+
+.estimator-slider input { accent-color: var(--cc-orange); flex: 1; }
+.estimator-slider output { font-size: 1.05rem; font-weight: 700; min-width: 52px; }
+
+.estimator-results {
+    border-top: 1px solid var(--cc-border);
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.estimator-results[hidden] { display: none; }
+.estimator-results h3 { font-size: 1rem; margin: 0 0 10px; text-align: left; }
+
+.estimator-results ul {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.estimator-results li {
+    align-items: center;
+    background: var(--cc-soft);
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 10px 12px;
+}
+
+.estimator-results li span { color: #555; }
+.estimator-results li strong, .estimator-results li strong span { color: var(--cc-charcoal); }
+
+.estimator-box {
+    align-items: center;
+    background: var(--cc-soft);
+    border: 1px solid var(--cc-border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+    padding: 18px;
+    text-align: center;
+}
+
+.estimator-box p { padding: 0; }
+
+.estimator-price-row {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+}
+
+.estimator-price-card {
+    background: #fff;
+    border: 1px solid var(--cc-border);
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.estimator-price-card h3 {
+    color: #555;
+    font-size: 0.9rem;
+    margin: 0 0 6px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.estimator-price { color: var(--cc-charcoal); font-size: clamp(1.65rem, 4vw, 2.25rem); font-weight: 700; }
+.estimator-price-note { color: var(--cc-muted); display: block; font-size: 0.78rem; margin-top: 5px; }
+.estimate-action { justify-content: flex-end; }
+.estimate-button { min-width: 210px; }
+
+.estimator-status {
+    border: 1px solid;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+}
+
+.estimator-status.info { background: #fff7ed; border-color: #fdba74; color: #7c2d12; }
+.estimator-status.success { background: #ecfdf3; border-color: #86d5a7; color: var(--cc-success); }
+.estimator-status.error { background: #fff1f1; border-color: #e2a2a2; color: var(--cc-error); }
+
+.nav-icon {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-icon:hover { background: transparent; }
+
+.dropdown-content.show { display: block; }
+
+@media (max-width: 760px) {
+    .estimator-wrapper { margin: 24px auto; width: min(100% - 20px, 1100px); }
+    .estimator-card { padding: 16px; }
+    .estimator-grid, .contact-grid, .estimator-price-row { grid-template-columns: 1fr; }
+    #map { height: 380px; }
+    .estimator-actions .btn-cc, .estimate-button { flex: 1 1 100%; width: 100%; }
+}
+
+@media (max-width: 480px) {
+    #map { height: 320px; }
+    .estimator-results li { align-items: flex-start; flex-direction: column; gap: 2px; }
+}
